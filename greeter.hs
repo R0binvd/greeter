@@ -29,7 +29,7 @@ diffTime y (Just x)  = Just $ diffUTCTime y $ zonedTimeToUTC x
 format :: RealFrac a => Maybe a -> String
 format Nothing = "Error"
 format (Just secs)
-  | days == 0 || hours < 1 = " < 1 hours since last pacman -Syu"
+  | days == 0 && hours < 1 = " < 1 hours since last pacman -Syu"
   | otherwise = " " ++ show days ++ " days, " ++ show hours ++ " hours since last pacman -Syu"
   where days =  fst x
         hours = floor $ snd x
